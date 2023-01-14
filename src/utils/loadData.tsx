@@ -62,7 +62,5 @@ export const GetData = async <T extends DataNames>(name: T) => {
     return projects as DataTypeMap[T];
   }
 
-  return (await import(
-    `${process.env.NODE_ENV === "development" ? "../../" : ""}${pathLookup[name]}`
-  )) as DataTypeMap[T];
+  return JSON.parse(fs.readFileSync(`${pathLookup[name]}`, "utf8")) as DataTypeMap[T];
 };
