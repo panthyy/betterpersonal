@@ -20,7 +20,7 @@ export const Chevron = ({ size = "medium", color = "#333333", strokeWidth = 1, d
       fill={color}
       stroke={color}
     >
-      <g id="SVGRepo_bgCarrier" stroke-width={strokeWidth}></g>
+      <g id="SVGRepo_bgCarrier" strokeWidth={strokeWidth}></g>
       <g
         id="SVGRepo_tracerCarrier"
         strokeLinecap="round"

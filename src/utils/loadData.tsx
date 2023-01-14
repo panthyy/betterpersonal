@@ -46,10 +46,10 @@ type DataTypeMap = {
 };
 
 const pathLookup: { [key in DataNames]: string } = {
-  projects: "content/projects",
-  information: "content/settings/information.json",
-  home: "content/pages/index.json",
-  settings: "content/settings/settings.json",
+  projects: process.cwd() + "/content/projects",
+  information: process.cwd() + "/content/settings/information.json",
+  home: process.cwd() + "/content/pages/index.json",
+  settings: process.cwd() + "/content/settings/settings.json",
 };
 
 export const GetData = async <T extends DataNames>(name: T) => {
