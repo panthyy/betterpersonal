@@ -3,19 +3,29 @@ import classNames from "classnames";
 
 type RunButtonProps = {
   disabled: boolean;
-  onClick: () => void;
+  script: string;
 };
-const RunButton = ({ disabled, onClick }: RunButtonProps) => {
+const RunButton = ({ disabled, script }: RunButtonProps) => {
   return (
-    <button
-      onClick={onClick}
-      className={classNames(
-        disabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-700",
-        "text-white font-bold py-2 px-4 rounded"
-      )}
-    >
-      Run
-    </button>
+    <>
+      <button
+        id="runButton"
+        className={classNames(
+          disabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-700",
+          "text-white font-bold py-2 px-4 rounded"
+        )}
+      >
+        Run
+      </button>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          const RunButtonFn = () => {${script}}
+          document.getElementById("runButton").addEventListener("click", RunButtonFn);
+          `,
+        }}
+      />
+    </>
   );
 };
 
@@ -35,12 +45,7 @@ export const Code = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-end">
-        <RunButton
-          disabled={false}
-          onClick={() => {
-            console.log("Hire me plz");
-          }}
-        />
+        <RunButton disabled={false} script={'console.log("Hire me plz");'} />
       </div>
       <div className="w-[500px] h-[300px] bg-[#282c34f5] p-4 rounded-md overflow-hidden shadow-md inset-1">
         <div className="text-white" dangerouslySetInnerHTML={{ __html: code }} />

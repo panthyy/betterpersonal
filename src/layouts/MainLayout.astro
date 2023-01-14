@@ -30,7 +30,7 @@ const home = await GetData("home");
           <Menu items={settings.menu} />
         </div>
       </header>
-      <Hero home={home} client:load info={info} />
+      <Hero home={home} info={info} />
     </div>
     <slot />
   </body>
