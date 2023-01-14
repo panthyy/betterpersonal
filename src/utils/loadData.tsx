@@ -53,8 +53,6 @@ const pathLookup: { [key in DataNames]: string } = {
 };
 
 export const GetData = async <T extends DataNames>(name: T) => {
-  console.log(JSON.stringify(fs.readdirSync(".")));
-
   if (name === "projects") {
     const files = fs.readdirSync(pathLookup[name]);
     const projects = files.map((file) => {
@@ -64,5 +62,7 @@ export const GetData = async <T extends DataNames>(name: T) => {
     return projects as DataTypeMap[T];
   }
 
-  return (await import(`../../${pathLookup[name]}`)) as DataTypeMap[T];
+  return (await import(
+    `${process.env.NODE_ENV === "development" ? "../../" : ""}${pathLookup[name]}`
+  )) as DataTypeMap[T];
 };
