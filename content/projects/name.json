@@ -1,0 +1,10 @@
+{
+  "name": "OnEdgeCMS",
+  "description": "Globally distributed edge-based content management system and website builder based on React components. The system uses microVMs for server-side rendering and code execution, which allows for fast startup times. I am building it using Module Federation, Firecracker, and Cloudflare's infrastructure.  I have already solved many of the technical challenges associated with this project and am now in the process of implementing the functionalities. The goal of OnEdgeCMS is to allow users to create and deploy individual components, such as those found in a component library, with built-in server-side logic. This will enable designers to easily incorporate these components into their designs and modify their settings to fit the style of the page. The system is also designed to be infinitely scalable.",
+  "image": "/screenshot-2023-01-14-at-13-11-19-panthy.png",
+  "tags": [
+    "test"
+  ],
+  "link": "",
+  "github": ""
+}
