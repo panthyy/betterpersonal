@@ -9,16 +9,16 @@ const projects = await GetData("projects");
 
 <MainLayout title={settings.title || ""} description={settings.description || ""}>
   <div class="bg-[#6F9AFF] pb-32 w-full">
-    <div class="px-6 md:px-[300px] py-12 w-full">
+    <div class="py-12 w-full px-6 sm:px-[15%]">
       <div class="flex flex-col items-center justify-center w-full">
-        <h1 class="text-4xl font-bold text-white">Projects</h1>
+        <h1 id="projects" class="text-4xl font-bold text-white">Projects</h1>
 
         <div class="mt-[100px] w-full flex flex-col gap-[150px]">
           {
             projects.map((project) => {
               return (
                 <div class="flex flex-col ">
-                  <div class="flex justify-between flex-col-reverse md:flex-row w-full gap-10 md:gap-[100px]">
+                  <div class="flex justify-between flex-col-reverse xl:flex-row w-full gap-10 md:gap-[100px]">
                     <div class="flex flex-col  w-full md:w-[600px]">
                       <div class="flex justify-between items-center">
                         <h1 class="text-2xl font-bold text-white">{project.name}</h1>
@@ -37,10 +37,10 @@ const projects = await GetData("projects");
                       </div>
                       <p class="text-gray-100 mt-[30px]">{project.description}</p>
                     </div>
-                    <div class=" h-[300px]   rounded-md overflow-hidden">
+                    <div class=" h-[300px]  rounded-md overflow-hidden">
                       <img
                         src={typeof project.image === "string" ? project.image : project.image[0]}
-                        class="w-full h-full  rounded-md object-contain"
+                        class="w-full h-full rounded-md object-contain"
                         alt="project image"
                       />
                     </div>

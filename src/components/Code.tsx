@@ -11,7 +11,9 @@ const RunButton = ({ disabled, script }: RunButtonProps) => {
       <button
         id="runButton"
         className={classNames(
-          disabled ? "bg-gray-400" : "bg-green-500 hover:bg-green-700",
+          disabled
+            ? "bg-gray-400"
+            : "bg-green-500 hover:bg-green-700 active:bg-green-900 active:scale-105 transform transition duration-200",
           "text-white font-bold py-2 px-4 rounded"
         )}
       >
@@ -43,8 +45,8 @@ export const Code = () => {
 `;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="w-full flex justify-end">
+    <div className="flex flex-col gap-4 relative">
+      <div className="w-full flex justify-end absolute bottom-4 right-4">
         <RunButton disabled={false} script={'console.log("Hire me plz");'} />
       </div>
       <div className="w-[500px] h-[300px] bg-[#282c34f5] p-4 rounded-md overflow-hidden shadow-md inset-1">

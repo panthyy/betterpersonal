@@ -6,10 +6,10 @@ export const Hero = ({ info, home }: { info: Information; home: Home }) => (
   <div className="w-full h-full xl:px-[250px] xl:pt-[120px] md:flex-row md:px-[160px] md:pt-[80px] pt-[40px] relative">
     <div className="w-full flex justify-between  flex-shrink-0 px-[30px]">
       <div className=" xl:w-[550px]  md:w-[450px] w-full ">
-        <h4>About me</h4>
+        <h3>About me</h3>
         <div className="mt-[20px]">
           <p
-            className="text-[#666] text-[16px] md:text-[18px] font-medium"
+            className="text-[16px] "
             dangerouslySetInnerHTML={{
               __html: home.about,
             }}
@@ -45,9 +45,12 @@ export const Hero = ({ info, home }: { info: Information; home: Home }) => (
       </div>
     </div>
 
-    <div className="absolute w-full bottom-[140px] left-0 -z-10 flex justify-center">
-      <Chevron direction="down" color="white" />
+    <div className="absolute w-full bottom-[140px] left-0  flex justify-center">
+      <a href="/#projects" className="z-10">
+        <Chevron direction="down" color="white" />
+      </a>
     </div>
+    <script></script>
     <div className="absolute bottom-0 left-0 w-full h-full -z-20 flex items-end ">
       <svg width="100%" height="500" viewBox="0 0 100% 500" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
