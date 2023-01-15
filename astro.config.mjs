@@ -19,6 +19,46 @@ export default defineConfig({
         },
         collections: [
           {
+            name: "posts",
+            label: "Posts",
+            folder: "content/posts",
+            identifier_field: "title",
+            create: true,
+            format: "json",
+            fields: [
+              {
+                label: "Title",
+                name: "title",
+                widget: "string",
+              },
+              {
+                label: "Date",
+                name: "date",
+                widget: "datetime",
+              },
+              {
+                label: "Image",
+                name: "image",
+                widget: "image",
+              },
+              {
+                label: "Description",
+                name: "description",
+                widget: "string",
+              },
+              {
+                label: "Tags",
+                name: "tags",
+                widget: "list",
+              },
+              {
+                label: "Body",
+                name: "body",
+                widget: "markdown",
+              },
+            ],
+          },
+          {
             name: "settings",
             label: "Settings",
             files: [

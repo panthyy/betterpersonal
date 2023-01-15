@@ -10,12 +10,16 @@
       "link": "/#about"
     },
     {
-      "name": "Projects",
-      "link": "/#projects"
-    },
-    {
       "name": "Contact",
       "link": "/#contact"
+    },
+    {
+      "name": "Blog",
+      "link": "/post"
+    },
+    {
+      "name": "Projects",
+      "link": "/#projects"
     }
   ]
 }

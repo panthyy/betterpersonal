@@ -1,0 +1,57 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { GetData } from "../../utils/loadData";
+import { Github, Link } from "../../icons";
+import classNames from "classnames";
+
+const settings = await GetData("settings");
+const posts = await GetData("posts");
+---
+
+<MainLayout title={settings.title || ""} description={settings.description || ""}>
+  <div class="px-6 xl:px-96 md:px-48 sm:px-24 mt-10 xl:mt-20 md:mt-16 sm:mt-12">
+    <h2>
+      <span class="text-2xl font-bold">Posts</span>
+    </h2>
+
+    <div>
+      {
+        posts.map((post) => {
+          return (
+            <a href={"/post/" + post.title.toLocaleLowerCase().replace(/ /g, "-")} class="block mt-10 group">
+              <div class="mt-10 border-b pb-4 group-hover:border-gray-500 flex justify-between ">
+                <div>
+                  <div class="flex flex-col md:flex-row">
+                    <div class="flex-1">
+                      <h3 class="text-2xl font-bold">{post.title}</h3>
+                      <p class="text-sm text-gray-500">
+                        {new Date(post.date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2">{post.description}</div>
+
+                  <div class="mt-2">
+                    {post.tags.map((tag, index) => {
+                      return (
+                        <span class="text-sm text-gray-500">
+                          {tag}
+                          {index != post.tags.length - 1 ? "-" : ""}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                <img src={post.image || ""} class="mt-4 md:mt-0 w-64  object-contain rounded-lg" />
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</MainLayout>

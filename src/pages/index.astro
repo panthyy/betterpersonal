@@ -2,12 +2,15 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import { GetData } from "../utils/loadData";
 import { Github, Link } from "../icons";
+import { Hero } from "../components/Hero";
 
 const settings = await GetData("settings");
 const projects = await GetData("projects");
+const info = await GetData("information");
+const home = await GetData("home");
 ---
 
-<MainLayout title={settings.title || ""} description={settings.description || ""}>
+<MainLayout Hero={Hero} title={settings.title || ""} description={settings.description || ""}>
   <div class="bg-[#6F9AFF] pb-32 w-full">
     <div class="py-12 w-full px-6 sm:px-[15%]">
       <div class="flex flex-col items-center justify-center w-full">
@@ -17,11 +20,11 @@ const projects = await GetData("projects");
           {
             projects.map((project) => {
               return (
-                <div class="flex flex-col ">
-                  <div class="flex justify-between flex-col-reverse xl:flex-row w-full gap-10 md:gap-[100px]">
-                    <div class="flex flex-col  w-full md:w-[600px]">
+                <div class="flex flex-col border-b pb-10">
+                  <div class="flex justify-between flex-col-reverse xl:flex-row w-full gap-10 md:gap-[100px] ">
+                    <div class="flex flex-col  w-full md:w-[600px] px-2 ">
                       <div class="flex justify-between items-center">
-                        <h1 class="text-2xl font-bold text-white">{project.name}</h1>
+                        <h1 class="text-2xl font-bold text-zinc-100">{project.name}</h1>
                         <div class="flex space-x-4">
                           {project.github && (
                             <a href={project.github} target="_blank" rel="noreferrer">
@@ -35,7 +38,7 @@ const projects = await GetData("projects");
                           )}
                         </div>
                       </div>
-                      <p class="text-gray-100 mt-[30px]">{project.description}</p>
+                      <p class="text-zinc-100 mt-[30px]">{project.description}</p>
                     </div>
                     <div class=" h-[300px]  rounded-md overflow-hidden">
                       <img

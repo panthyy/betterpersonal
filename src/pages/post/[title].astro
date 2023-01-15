@@ -1,0 +1,43 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { GetData } from "../../utils/loadData";
+import type { Post } from "../../utils/loadData";
+
+export const getStaticPaths = async () => {
+  const posts = await GetData("posts");
+
+  return posts.map((post) => {
+    return {
+      params: {
+        title: post.title.toLocaleLowerCase().replace(/ /g, "-"),
+      },
+      props: {
+        post,
+      },
+    };
+  });
+};
+
+const { post } = Astro.props as { post: Post };
+---
+
+<MainLayout>
+  <div class="px-6 xl:px-96 md:px-48 sm:px-24 mt-10 xl:mt-20 md:mt-16 sm:mt-12 flex flex-col gap-6 relative pb-96">
+    <div>
+      <h1>{post.title}</h1>
+      <p>
+        {
+          new Date(post.date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </p>
+    </div>
+    <div class="flex flex-row items-center justify-center w-full h-[500px]">
+      <img src={post.image} alt={post.title} class="object-cover w-full h-full" />
+    </div>
+    <div class="mt-10"><p>{post.body}</p></div>
+  </div>
+</MainLayout>

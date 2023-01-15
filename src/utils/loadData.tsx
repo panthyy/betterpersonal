@@ -1,5 +1,5 @@
 import fs from "fs";
-type DataNames = "projects" | "information" | "home" | "settings";
+type DataNames = "projects" | "information" | "home" | "settings" | "posts";
 
 export type Project = {
   name: string;
@@ -7,6 +7,15 @@ export type Project = {
   link: string;
   github: string;
   image: string[] | string;
+  tags: string[];
+};
+
+export type Post = {
+  title: string;
+  description: string;
+  body: string;
+  date: string;
+  image: string;
   tags: string[];
 };
 
@@ -42,6 +51,8 @@ type DataTypeMap = {
     ? Home
     : key extends "settings"
     ? Settings
+    : key extends "posts"
+    ? Post[]
     : never;
 };
 
@@ -50,10 +61,11 @@ const pathLookup: { [key in DataNames]: string } = {
   information: "content/settings/information.json",
   home: "content/pages/index.json",
   settings: "content/settings/settings.json",
+  posts: "content/posts",
 };
 
 export const GetData = async <T extends DataNames>(name: T) => {
-  if (name === "projects") {
+  if (name !== "information" && name !== "home" && name !== "settings") {
     const files = fs.readdirSync(pathLookup[name]);
     const projects = files.map((file) => {
       const project = JSON.parse(fs.readFileSync(`${pathLookup[name]}/${file}`, "utf8"));
